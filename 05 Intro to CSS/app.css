@@ -1,0 +1,15 @@
+h1 {
+	color: rgba(0, 200, 100, 0.8);
+	border: 5px solid purple;
+}
+
+h4 {
+	background: rgb(255, 100, 80);
+}
+
+body {
+	background: pink;
+	/*background: url(https://images.homedepot-static.com/productImages/3c9e8c98-c56d-4b64-be76-f4cf877de597/svn/beige-designer-stencils-stencils-fs024-64_1000.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;*/
+}
