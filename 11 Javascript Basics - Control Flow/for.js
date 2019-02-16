@@ -21,5 +21,3 @@ for(var i = 5; i <= 50; i++) {
 		console.log(i);
 	}
 }
-
-console.log("Cache commit");
