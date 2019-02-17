@@ -1,11 +1,6 @@
 console.log("Problem 1:");
 function isEven(num) {
-	if (num % 2 == 0) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return num % 2 == 0;
 }
 
 console.log(isEven(4));
@@ -17,9 +12,6 @@ console.log(isEven(333));
 console.log("Problem 2:");
 function factorial(num) {
 	var fact = 1;
-	if (num == 0 || num == 1) {
-		return 1;
-	}
 	for (var i = num; i > 0; i--) {
 		fact = fact * i;
 	}
