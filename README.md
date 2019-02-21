@@ -5,5 +5,15 @@ Clone the repository into the desired directory. Open the corresponding .html fi
 ## What I Learned:
 This was my introduction to Web Development, so this list will be long.
 ### HTML
+ * Tags, Lists, Divs and Spans
+ * Tables, Forms, Inputs, Labels, Buttons, Form Validation
 ### CSS
+ * Colors, Backgrounds, Borders, Selectors
+ * Text, Font, Box Model
+ * Bootstrap
 ### JS
+ * Control Flow
+ * Functions
+ * Arrays
+ * Objects
+ * DOM and DOM Manipulation
