@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+	<script type="text/javascript" src="paper-full.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="circles.css">
+	<script type="text/paperscript" canvas="myCanvas">
+	// Create a Paper.js Path to draw a line into it:
+	var path = new Path();
+
+	for (var i = 0; i < 11; i++) {
+		for (var j = 0; j < 11; j++) {
+			var myCircle = new Path.Circle(new Point(100*i, 100*j), 10);
+			myCircle.fillColor = 'purple';
+		}
+	}
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
