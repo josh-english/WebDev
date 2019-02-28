@@ -6,16 +6,17 @@ app.get("/", function(req, res) {
 });
 
 // animal speaking requests
-app.get("/speak/pig", function(req, res) {
-    res.send("The pig says 'Oink'");
-});
-
-app.get("/speak/cow", function(req, res) {
-    res.send("The cow says 'Moo'");
-});
-
-app.get("/speak/dog", function(req, res) {
-    res.send("The dog says 'Woof Woof!'");
+app.get("/speak/:animal", function(req, res) {
+    var sounds = {
+        pig: "Oink",
+        cow: "Moo",
+        dog: "Woof Woof!",
+        cat: "I hate you human!",
+        goldfish: "..."
+    }
+    var animal = req.params.animal.toLowerCase();
+    var sound = sounds[animal];
+    res.send("The " + animal + " says '" + sound + "'");
 });
 
 // repeating word requests
