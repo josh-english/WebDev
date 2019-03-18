@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+
+
+<div class="container pt-3 text-center">
+    <div class="jumbotron">
+      <h1 class="display-4"><%= cat.name %></h1>
+      <hr class="my-4">
+      <img src="<%= cat.image %>" class="rounded mx-auto">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-warning btn-lg" href="/cats/<%= cat._id %>/edit" role="button">
+          Edit this Listing  
+          <i class="fas fa-pencil-alt"></i>
+      </a>
+      <div class="pt-3">
+          <a class="btn btn-success btn-lg" href="/cats/<%= cat._id %>" role="button">
+              Adopt Me 
+              <i class="fas fa-paw"></i>
+          </a>
+      </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>

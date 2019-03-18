@@ -1,10 +1,12 @@
 var express = require("express");
 var app = express();
 var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 
 //app config
 app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost:27017/cat_adoption", {useNewUrlParser: true});
+app.use(bodyParser.urlencoded({extended: true}));
 
 //cat adoption schema
 var catSchema = new mongoose.Schema({
@@ -47,6 +49,42 @@ app.get("/cats", function(req, res){
 // new route
 app.get("/cats/new", function(req, res){
     res.render("new");
+});
+
+// create route
+app.post("/cats", function(req, res){
+    Cats.create(req.body.cat, function(err, newCat){
+        if(err){
+            res.render("new");
+        }
+        else{
+            res.redirect("/cats");
+        }
+    })
+});
+
+// show route
+app.get("/cats/:id", function(req, res){
+    Cats.findById(req.params.id, function(err, cat){
+        if(err){
+            res.render("index");
+        }
+        else{
+            res.render("show", {cat: cat});
+        }
+    });
+});
+
+// edit route
+app.get("/cats/:id/edit", function(req, res) {
+    Cats.findById(req.params.id, function(err, cat){
+        if(err){
+            res.render("/cats/" + req.params.id);
+        }
+        else {
+            res.render("edit", {cat: cat});
+        }
+    });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
