@@ -2,11 +2,14 @@ var express = require("express");
 var app = express();
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
 //app config
 app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost:27017/cat_adoption", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"))
+app.use(express.static("public"));
 
 //cat adoption schema
 var catSchema = new mongoose.Schema({
@@ -60,14 +63,14 @@ app.post("/cats", function(req, res){
         else{
             res.redirect("/cats");
         }
-    })
+    });
 });
 
 // show route
 app.get("/cats/:id", function(req, res){
     Cats.findById(req.params.id, function(err, cat){
         if(err){
-            res.render("index");
+            res.redirect("cats");
         }
         else{
             res.render("show", {cat: cat});
@@ -83,6 +86,30 @@ app.get("/cats/:id/edit", function(req, res) {
         }
         else {
             res.render("edit", {cat: cat});
+        }
+    });
+});
+
+// update route
+app.put("/cats/:id", function(req, res){
+    Cats.findByIdAndUpdate(req.params.id, req.body.cat, function(err, updatedCat){
+        if(err){
+            res.redirect("/cats");
+        }
+        else{
+            res.redirect("/cats/" + req.params.id);
+        }
+    });
+});
+
+// destroy route
+app.delete("/cats/:id", function(req, res){
+    Cats.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/cats");
+        }
+        else {
+            res.redirect("/cats");
         }
     });
 });

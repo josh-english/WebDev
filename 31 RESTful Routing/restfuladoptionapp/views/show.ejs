@@ -1,21 +1,27 @@
 <% include ./partials/header %>
 
 
-<div class="container pt-3 text-center">
+<div class="container-fluid pt-3 text-center">
     <div class="jumbotron">
       <h1 class="display-4"><%= cat.name %></h1>
       <hr class="my-4">
-      <img src="<%= cat.image %>" class="rounded mx-auto">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-warning btn-lg" href="/cats/<%= cat._id %>/edit" role="button">
+      <img src="<%= cat.image %>" class="rounded mx-auto img-fluid">
+      <h2>Basic Stats:</h2>
+      <h3>Age: <%= cat.age %></h3>
+      <h3>Breed: <%= cat.breed %></h3>
+      <h3>Size: <%= cat.size %></h3>
+      <p class="text-muted">Listed for adoption: <%= cat.created.toDateString() %></p>
+      <a class="btn btn-warning" href="/cats/<%= cat._id %>/edit" method="GET" role="button">
           Edit this Listing  
           <i class="fas fa-pencil-alt"></i>
       </a>
       <div class="pt-3">
-          <a class="btn btn-success btn-lg" href="/cats/<%= cat._id %>" role="button">
-              Adopt Me 
-              <i class="fas fa-paw"></i>
-          </a>
+        <form action="/cats/<%= cat._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-success btn-lg">
+            Adopt Me 
+            <i class="fas fa-paw"></i>
+          </button>
+        </form>
       </div>
     </div>
 </div>

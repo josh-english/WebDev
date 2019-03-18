@@ -1,45 +1,60 @@
 <% include ./partials/header %>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row pb-3">
-        <div class="col"></div>
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-6 text-center mx-auto">
+          <img src="<%= cat.image %>" class="rounded mx-auto img-fluid">
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-sm-6 text-center mx-auto">
             <h1>Edit <%= cat.name %>'s Adoption Listing:</h1>
         </div>
-        <div class="col"></div>
     </div>
     <div class="row">
         <div class="col"></div>
         <div class="col-sm-6">
-            <form action="/cats" method="POST">
+            <form action="/cats/<%= cat._id %>?_method=PUT" method="POST">
               <div class="form-group">
                 <label for="catname">Cat Name</label>
-                <input type="text" class="form-control" id="catname" name="cat[name]" placeholder="name">
+                <input type="text" class="form-control" id="catname" name="cat[name]" value="<%= cat.name %>">
               </div>
               <div class="form-group">
                 <label for="catimage">Image of Cat</label>
-                <input type="text" class="form-control" id="catimage" name="cat[image]" placeholder="link">
+                <input type="text" class="form-control" id="catimage" name="cat[image]" value="<%= cat.image %>">
               </div>
               <div class="form-group">
                 <label for="catage">Age</label>
-                <input type="number" class="form-control" id="catage" name="cat[age]" placeholder="age">
+                <input type="number" class="form-control" id="catage" name="cat[age]" value="<%= cat.age %>">
               </div>
               <div class="form-group">
                 <label for="catbreed">Breed</label>
-                <input type="text" class="form-control" id="catbreed" name="cat[breed]" placeholder="breed">
+                <input type="text" class="form-control" id="catbreed" name="cat[breed]" value="<%= cat.breed %>">
               </div>
               <label for="checkboxes">Size</label>
               <div class="text-center">
                 <div class="form-group form-check-inline" id="checkboxes">
-                  <input type="checkbox" class="form-check-input" id="size1" name="cat[size]" value="Small">
+                  <% if(cat.size == "Small"){ %>
+                    <input type="checkbox" class="form-check-input" id="size1" name="cat[size]" value="Small" checked>
+                  <% } else { %>
+                    <input type="checkbox" class="form-check-input" id="size1" name="cat[size]" value="Small">
+                  <% } %>
                   <label class="form-check-label" for="size1">Small</label>
                 </div>
                 <div class="form-group form-check-inline" id="checkboxes">
-                  <input type="checkbox" class="form-check-input" id="size2" name="cat[size]" value="Medium">
+                  <% if(cat.size == "Medium"){ %>
+                    <input type="checkbox" class="form-check-input" id="size2" name="cat[size]" value="Medium" checked>
+                  <% } else { %>
+                    <input type="checkbox" class="form-check-input" id="size2" name="cat[size]" value="Medium">
+                  <% } %>
                   <label class="form-check-label" for="size2">Medium</label>
                 </div>
                 <div class="form-group form-check-inline" id="checkboxes">
-                  <input type="checkbox" class="form-check-input" id="size3" name="cat[size]" value="Large">
+                  <% if(cat.size == "Large"){ %>
+                    <input type="checkbox" class="form-check-input" id="size3" name="cat[size]" value="Large" checked>
+                  <% } else { %>
+                    <input type="checkbox" class="form-check-input" id="size3" name="cat[size]" value="Large">
+                  <% } %>
                   <label class="form-check-label" for="size3">Large</label>
                 </div>
               </div>

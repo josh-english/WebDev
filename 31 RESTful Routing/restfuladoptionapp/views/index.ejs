@@ -9,16 +9,26 @@
       <a class="btn btn-primary btn-lg" href="/cats/new" role="button">New Cat</a>
     </div>
     
-    <% cats.forEach(function(cat){ %>
-        <div>
-            <h1><%= cat.name %></h1>
-            <img src="<%= cat.image %>">
-            <h2>Age: <%= cat.age %></h2>
-            <h2>Size: <%= cat.size %></h2>
-            <h2>Breed: <%= cat.breed %></h2>
-            <a href="/cats/<%= cat._id %>">See More!</a>
-        </div>
-    <% }); %>
+    <div class="row">
+        <% cats.forEach(function(cat){ %>
+            <div class="col-md-3 d-flex pb-4">
+                <div class="card">
+                  <img src="<%= cat.image %>" class="card-img-top img-fluid" alt="Image of cat">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= cat.name %></h5>
+                  </div>
+                  <div class="text-center">
+                    <form action="/cats/<%= cat._id %>" method="GET">
+                      <button type="submit" class="btn btn-success btn-block">
+                        <i class="fas fa-info-circle"></i>
+                         Take me home!
+                      </button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
 </div>
 
 <% include ./partials/footer %>
