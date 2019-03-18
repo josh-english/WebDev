@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome to the Cat Adoption page!</h1>
+      <p class="lead">Help us find the <strong>purrr</strong>-fect match for you!</p>
+      <hr class="my-4">
+      <p>If you need to give your cat up for adoption, click below. We won't judge you. But we kind of will...</p>
+      <a class="btn btn-primary btn-lg" href="/cats/new" role="button">New Cat</a>
+    </div>
+    
+    <% cats.forEach(function(cat){ %>
+        <div>
+            <h1><%= cat.name %></h1>
+            <img src="<%= cat.image %>">
+            <h2>Age: <%= cat.age %></h2>
+            <h2>Size: <%= cat.size %></h2>
+            <h2>Breed: <%= cat.breed %></h2>
+        </div>
+    <% }); %>
+</div>
+
+<% include ./partials/footer %>
