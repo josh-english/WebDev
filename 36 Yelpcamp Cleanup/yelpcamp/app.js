@@ -9,7 +9,7 @@ var express = require("express"),
     User = require("./models/user");
 
 var seedDB = require("./seeds");
-seedDB();
+//seedDB();
 
 // requiring routes
 var commentRoutes = require("./routes/comments"),
